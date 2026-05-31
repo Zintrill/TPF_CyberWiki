@@ -1,0 +1,218 @@
+.tools-main {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.graph-container {
+  position: relative;
+  background: radial-gradient(ellipse at 50% 50%, rgba(0, 40, 80, 0.4) 0%, rgba(5, 15, 35, 1) 70%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  overflow: hidden;
+}
+
+.graph-svg {
+  width: 100%;
+  max-width: 700px;
+  height: auto;
+  aspect-ratio: 1;
+  cursor: default;
+}
+
+.graph-legend {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.5);
+  background: rgba(5, 15, 35, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 0.6rem 1rem;
+}
+
+.legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 0.3rem;
+}
+
+.active-dot { background: #00c8ff; }
+.related-dot { background: rgba(255, 255, 255, 0.3); }
+
+.legend-scroll {
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 0.72rem;
+}
+
+.definition-panel {
+  background: rgba(8, 20, 50, 0.98);
+  border-left: 1px solid rgba(0, 200, 255, 0.15);
+  padding: 2rem;
+  overflow-y: auto;
+  position: relative;
+}
+
+.def-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.def-close:hover {
+  color: #fff;
+}
+
+.def-tags {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.def-tag {
+  background: rgba(0, 200, 255, 0.1);
+  border: 1px solid rgba(0, 200, 255, 0.25);
+  border-radius: 4px;
+  padding: 0.15rem 0.55rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #64b4ff;
+  letter-spacing: 0.06em;
+}
+
+.def-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 1rem 0;
+}
+
+.def-body {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.88rem;
+  line-height: 1.7;
+  margin: 0 0 1.5rem 0;
+  font-family: "Courier New", monospace;
+}
+
+.def-section-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.35);
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.def-concepts {
+  list-style: none;
+  margin: 0 0 1.5rem 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.concept-item {
+  display: flex;
+  gap: 0.65rem;
+  align-items: flex-start;
+}
+
+.concept-check {
+  color: #00c8ff;
+  font-size: 0.85rem;
+  margin-top: 0.1rem;
+  flex-shrink: 0;
+}
+
+.concept-name {
+  font-size: 0.88rem;
+  color: #fff;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+  font-family: "Courier New", monospace;
+}
+
+.concept-desc {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.45);
+  font-family: "Courier New", monospace;
+}
+
+.def-related {
+  list-style: none;
+  margin: 0 0 1.5rem 0;
+  padding: 0;
+}
+
+.related-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.related-item:hover {
+  border-color: rgba(0, 200, 255, 0.3);
+  color: #fff;
+}
+
+.def-threat-map {
+  background: rgba(0, 200, 255, 0.05);
+  border: 1px solid rgba(0, 200, 255, 0.15);
+  border-radius: 10px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 0.82rem;
+}
+
+.threat-icon {
+  font-size: 2rem;
+  opacity: 0.5;
+}
+
+.threat-label {
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .tools-main {
+    grid-template-columns: 1fr;
+  }
+
+  .definition-panel {
+    border-left: none;
+    border-top: 1px solid rgba(0, 200, 255, 0.15);
+    max-height: 50vh;
+  }
+}

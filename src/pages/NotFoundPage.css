@@ -1,0 +1,47 @@
+.nf-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  text-align: center;
+  padding: 3rem;
+}
+
+.nf-code {
+  font-size: 6rem;
+  font-weight: 800;
+  color: rgba(0, 200, 255, 0.15);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.nf-title {
+  font-size: 2rem;
+  color: #fff;
+  margin: 0;
+}
+
+.nf-subtitle {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.nf-btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.65rem 1.5rem;
+  background: rgba(0, 200, 255, 0.08);
+  border: 1px solid rgba(0, 200, 255, 0.3);
+  border-radius: 8px;
+  color: #00c8ff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.nf-btn:hover {
+  background: rgba(0, 200, 255, 0.15);
+}

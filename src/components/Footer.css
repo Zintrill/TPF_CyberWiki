@@ -1,0 +1,47 @@
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: rgba(5, 15, 35, 0.95);
+  border-top: 1px solid rgba(0, 200, 255, 0.15);
+  font-size: 0.82rem;
+}
+
+.footer-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer-brand {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.brand-cyber {
+  color: #00c8ff;
+}
+
+.brand-wiki {
+  color: #ffffff;
+}
+
+.footer-copy {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.footer-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.footer-link {
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-link:hover {
+  color: #ffffff;
+}

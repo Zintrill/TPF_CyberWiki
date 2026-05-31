@@ -1,0 +1,89 @@
+.article-card {
+  display: block;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 1.4rem;
+  text-decoration: none;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.article-card:hover {
+  border-color: rgba(0, 200, 255, 0.3);
+  background: rgba(0, 200, 255, 0.04);
+  transform: translateY(-2px);
+}
+
+.article-card-tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+}
+
+.tag {
+  padding: 0.15rem 0.55rem;
+  border-radius: 4px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.tag-offensive {
+  background: rgba(255, 80, 80, 0.15);
+  color: #ff6b6b;
+  border: 1px solid rgba(255, 80, 80, 0.3);
+}
+
+.tag-defensive,
+.tag-defense {
+  background: rgba(0, 200, 100, 0.12);
+  color: #4dcc8c;
+  border: 1px solid rgba(0, 200, 100, 0.25);
+}
+
+.tag-web-application {
+  background: rgba(180, 180, 255, 0.1);
+  color: #b4b4ff;
+  border: 1px solid rgba(180, 180, 255, 0.2);
+}
+
+.tag-owasp-top-10 {
+  background: rgba(255, 160, 60, 0.1);
+  color: #ffa03c;
+  border: 1px solid rgba(255, 160, 60, 0.25);
+}
+
+.tag-network,
+.tag-infrastructure,
+.tag-vulnerability,
+.tag-critical,
+.tag-defense-tech,
+.tag-active {
+  background: rgba(100, 180, 255, 0.1);
+  color: #64b4ff;
+  border: 1px solid rgba(100, 180, 255, 0.2);
+}
+
+.article-card-title {
+  color: #fff;
+  font-size: 1.05rem;
+  margin: 0 0 0.5rem 0;
+}
+
+.article-card-summary {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  margin: 0 0 1rem 0;
+}
+
+.article-card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 0.78rem;
+}
