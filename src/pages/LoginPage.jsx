@@ -18,6 +18,7 @@ export default function LoginPage() {
   const [tab, setTab] = useState(searchParams.get("tab") === "register" ? "register" : "login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { firebaseError } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -68,6 +69,11 @@ export default function LoginPage() {
   return (
     <div className="login-page">
       <title>Login Page</title>
+      {firebaseError && (
+        <div className="firebase-banner">
+          ⚠ Firebase nie jest skonfigurowany. Uzupełnij plik <code>.env.local</code> danymi z Firebase Console.
+        </div>
+      )}
       <nav className="login-nav">
         <Link to="/" className="navbar-brand">
           <span className="brand-cyber">Cyber</span>
