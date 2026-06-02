@@ -1,0 +1,227 @@
+.comments-section {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 2rem;
+}
+
+.comments-title {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  margin: 0 0 1.5rem 0;
+}
+
+.comments-icon {
+  font-size: 1rem;
+}
+
+.comments-count {
+  margin-left: auto;
+  background: rgba(0, 200, 255, 0.1);
+  border: 1px solid rgba(0, 200, 255, 0.2);
+  border-radius: 20px;
+  padding: 0.1rem 0.6rem;
+  font-size: 0.78rem;
+  color: #00c8ff;
+}
+
+.comments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.comments-empty {
+  text-align: center;
+  padding: 2rem;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 0.88rem;
+}
+
+.comment-card {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  transition: border-color 0.2s;
+}
+
+.comment-card:hover {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.comment-avatar-wrap {
+  flex-shrink: 0;
+}
+
+.comment-avatar-letter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, rgba(0, 200, 255, 0.2), rgba(0, 80, 200, 0.2));
+  border: 1px solid rgba(0, 200, 255, 0.25);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #00c8ff;
+}
+
+.comment-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.comment-header {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.4rem;
+}
+
+.comment-username {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.comment-dot {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.comment-time {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.comment-text {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.87rem;
+  line-height: 1.6;
+  margin: 0;
+  word-break: break-word;
+}
+
+.comment-form-area {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 1.25rem;
+}
+
+.comment-form {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.comment-form-avatar {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, rgba(0, 200, 255, 0.25), rgba(0, 80, 200, 0.25));
+  border: 1px solid rgba(0, 200, 255, 0.3);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #00c8ff;
+}
+
+.comment-input-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.comment-textarea {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  color: #fff;
+  font-size: 0.88rem;
+  font-family: inherit;
+  resize: vertical;
+  min-height: 80px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.comment-textarea:focus {
+  border-color: rgba(0, 200, 255, 0.4);
+}
+
+.comment-textarea::placeholder {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.comment-form-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.comment-char-count {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.comment-submit-btn {
+  background: rgba(0, 200, 255, 0.12);
+  border: 1px solid rgba(0, 200, 255, 0.35);
+  border-radius: 6px;
+  color: #00c8ff;
+  font-size: 0.83rem;
+  font-weight: 600;
+  padding: 0.45rem 1.1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.comment-submit-btn:hover:not(:disabled) {
+  background: rgba(0, 200, 255, 0.2);
+}
+
+.comment-submit-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.comment-login-prompt {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1rem 1.2rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.88rem;
+}
+
+.lock-icon {
+  font-size: 0.9rem;
+}
+
+.comment-login-link {
+  color: #00c8ff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: opacity 0.2s;
+}
+
+.comment-login-link:hover {
+  opacity: 0.8;
+}

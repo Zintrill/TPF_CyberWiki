@@ -1,10 +1,11 @@
 .tools-main {
   flex: 1;
   display: grid;
-  grid-template-columns: 1fr 380px;
+  grid-template-columns: 1fr 420px;
   gap: 0;
   overflow: hidden;
   position: relative;
+  height: calc(100vh - 60px - 52px); /* minus navbar + footer */
 }
 
 .graph-container {
@@ -19,25 +20,69 @@
 
 .graph-svg {
   width: 100%;
-  max-width: 700px;
-  height: auto;
-  aspect-ratio: 1;
+  height: 100%;
+  max-height: calc(100vh - 120px);
   cursor: default;
 }
 
-.graph-legend {
+.graph-search-bar {
   position: absolute;
-  bottom: 1.5rem;
-  left: 1.5rem;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   align-items: center;
-  gap: 1rem;
-  font-size: 0.78rem;
-  color: rgba(255, 255, 255, 0.5);
-  background: rgba(5, 15, 35, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  gap: 0.5rem;
+  background: rgba(5, 15, 35, 0.9);
+  border: 1px solid rgba(0, 200, 255, 0.2);
   border-radius: 8px;
-  padding: 0.6rem 1rem;
+  padding: 0.4rem 0.9rem;
+  width: 260px;
+  z-index: 10;
+  backdrop-filter: blur(8px);
+}
+
+.graph-search-bar input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 0.85rem;
+}
+
+.graph-search-bar input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.search-clear {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 0.8rem;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s;
+}
+
+.search-clear:hover { color: #fff; }
+
+.graph-legend {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.4);
+  background: rgba(5, 15, 35, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 0.5rem 0.85rem;
+  flex-wrap: wrap;
+  max-width: 400px;
+  backdrop-filter: blur(6px);
 }
 
 .legend-dot {
@@ -45,15 +90,38 @@
   height: 8px;
   border-radius: 50%;
   display: inline-block;
-  margin-right: 0.3rem;
+  margin-right: 0.25rem;
 }
 
 .active-dot { background: #00c8ff; }
-.related-dot { background: rgba(255, 255, 255, 0.3); }
+.branch-dot { background: #a855f7; }
+.leaf-dot { background: rgba(255, 255, 255, 0.3); }
 
-.legend-scroll {
-  color: rgba(255, 255, 255, 0.35);
-  font-size: 0.72rem;
+.legend-link-hint {
+  color: rgba(255, 255, 255, 0.25);
+  font-size: 0.68rem;
+  width: 100%;
+}
+
+.def-article-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: rgba(0, 200, 255, 0.1);
+  border: 1px solid rgba(0, 200, 255, 0.3);
+  border-radius: 8px;
+  color: #00c8ff;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.7rem;
+  margin-bottom: 1rem;
+  transition: all 0.2s;
+}
+
+.def-article-btn:hover {
+  background: rgba(0, 200, 255, 0.18);
 }
 
 .definition-panel {
@@ -62,6 +130,7 @@
   padding: 2rem;
   overflow-y: auto;
   position: relative;
+  height: 100%;
 }
 
 .def-close {

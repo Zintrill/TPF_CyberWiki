@@ -18,7 +18,7 @@ export default function LoginPage() {
   const [tab, setTab] = useState(searchParams.get("tab") === "register" ? "register" : "login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { firebaseError } = useAuth();
+  const { firebaseError, loginDemo } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -162,6 +162,24 @@ export default function LoginPage() {
           <div className="social-btns">
             <button className="social-btn" onClick={handleGoogle}>GOOGLE</button>
             <button className="social-btn" onClick={handleGithub}>GITHUB</button>
+          </div>
+
+          <div className="demo-section">
+            <div className="demo-label">DEMO ACCESS</div>
+            <div className="demo-btns">
+              <button
+                className="demo-btn demo-btn-admin"
+                onClick={() => { loginDemo("admin"); navigate("/admin"); }}
+              >
+                🛡 Admin Demo
+              </button>
+              <button
+                className="demo-btn demo-btn-user"
+                onClick={() => { loginDemo("user"); navigate("/"); }}
+              >
+                👤 User Demo
+              </button>
+            </div>
           </div>
         </div>
       </main>

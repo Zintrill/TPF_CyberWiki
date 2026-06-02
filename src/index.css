@@ -12,25 +12,35 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-html, body {
+html, body, #root {
   height: 100%;
+  width: 100%;
+}
+
+body {
   background: #050f23;
   color: #fff;
+  overflow-x: hidden;
 }
 
 #root {
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 }
 
 .page-wrapper {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: radial-gradient(ellipse at 20% 10%, rgba(0, 60, 120, 0.35) 0%, transparent 60%),
-    radial-gradient(ellipse at 80% 90%, rgba(0, 30, 80, 0.3) 0%, transparent 55%),
+  background: radial-gradient(ellipse at 20% 10%, rgba(0, 60, 120, 0.35) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 90%, rgba(0, 30, 80, 0.3) 0%, transparent 50%),
     #050f23;
+}
+
+/* All main content areas grow to fill available height */
+.page-wrapper > main {
+  flex: 1;
 }
 
 .loading-screen {
@@ -60,36 +70,12 @@ h1, h2, h3, h4, h5, h6 {
   color: #fff;
 }
 
-a {
-  color: inherit;
-}
+a { color: inherit; }
+button { cursor: pointer; }
+input, textarea, select { font-family: inherit; font-size: inherit; }
 
-button {
-  cursor: pointer;
-}
-
-input, textarea, select {
-  font-family: inherit;
-  font-size: inherit;
-}
-
-::-webkit-scrollbar {
-  width: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.03);
-}
-
-::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.12);
-  border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.2);
-}
-
-::selection {
-  background: rgba(0, 200, 255, 0.25);
-}
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: rgba(255,255,255,0.03); }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+::selection { background: rgba(0,200,255,0.25); }

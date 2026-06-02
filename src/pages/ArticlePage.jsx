@@ -1,6 +1,7 @@
 import { useParams, Link, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import Comments from "../components/Comments";
 import { articles } from "../data/articles";
 import "./ArticlePage.css";
 
@@ -61,6 +62,8 @@ export default function ArticlePage() {
               <p className="example-desc">{article.practicalExample.result}</p>
             </div>
           )}
+
+          <Comments articleSlug={article.slug} />
         </div>
 
         <aside className="article-sidebar">

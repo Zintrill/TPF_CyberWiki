@@ -256,6 +256,58 @@
   color: #fff;
 }
 
+.demo-section {
+  margin-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 1rem;
+}
+
+.demo-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.2);
+  text-align: center;
+  margin-bottom: 0.65rem;
+}
+
+.demo-btns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+}
+
+.demo-btn {
+  padding: 0.55rem 0.5rem;
+  border-radius: 7px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s;
+  letter-spacing: 0.02em;
+}
+
+.demo-btn-admin {
+  background: rgba(255, 80, 80, 0.1);
+  border: 1px solid rgba(255, 80, 80, 0.3);
+  color: #ff8080;
+}
+
+.demo-btn-admin:hover {
+  background: rgba(255, 80, 80, 0.18);
+}
+
+.demo-btn-user {
+  background: rgba(0, 200, 255, 0.08);
+  border: 1px solid rgba(0, 200, 255, 0.25);
+  color: #64c8ff;
+}
+
+.demo-btn-user:hover {
+  background: rgba(0, 200, 255, 0.15);
+}
+
 .navbar-brand {
   text-decoration: none;
   font-size: 1.25rem;
