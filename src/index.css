@@ -1,8 +1,4 @@
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
   font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
@@ -12,64 +8,43 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-html, body, #root {
-  height: 100%;
-  width: 100%;
-}
+html, body, #root { height: 100%; width: 100%; }
 
-body {
-  background: #050f23;
-  color: #fff;
-  overflow-x: hidden;
-}
+body { background: #050f23; color: #fff; overflow-x: hidden; }
 
-#root {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
+#root { display: flex; flex-direction: column; min-height: 100vh; }
 
 .page-wrapper {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   background: radial-gradient(ellipse at 20% 10%, rgba(0, 60, 120, 0.35) 0%, transparent 55%),
-    radial-gradient(ellipse at 80% 90%, rgba(0, 30, 80, 0.3) 0%, transparent 50%),
-    #050f23;
+    radial-gradient(ellipse at 80% 90%, rgba(0, 30, 80, 0.3) 0%, transparent 50%), #050f23;
 }
 
-/* All main content areas grow to fill available height */
-.page-wrapper > main {
-  flex: 1;
+.page-wrapper > main { flex: 1; }
+
+/* Full-width inner container used by all pages */
+.page-inner {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 2.5rem;
 }
 
 .loading-screen {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #050f23;
+  min-height: 100vh; display: flex; align-items: center; justify-content: center; background: #050f23;
 }
-
 .loading-spinner {
-  width: 36px;
-  height: 36px;
-  border: 3px solid rgba(0, 200, 255, 0.15);
+  width: 36px; height: 36px;
+  border: 3px solid rgba(0,200,255,0.15);
   border-top-color: #00c8ff;
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
 }
+@keyframes spin { to { transform: rotate(360deg); } }
 
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 700;
-  line-height: 1.2;
-  color: #fff;
-}
-
+h1,h2,h3,h4,h5,h6 { font-weight: 700; line-height: 1.2; color: #fff; }
 a { color: inherit; }
 button { cursor: pointer; }
 input, textarea, select { font-family: inherit; font-size: inherit; }

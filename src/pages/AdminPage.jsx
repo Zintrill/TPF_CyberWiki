@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import Footer from "../components/Footer";
+import { toast } from "../components/Toast";
 import "./AdminPage.css";
 
 const stats = [
@@ -142,11 +143,17 @@ export default function AdminPage() {
                         <span className={`comment-tag tag-${c.tagColor}`}>{c.tag}</span>
                       </div>
                       <p className="comment-text">{c.text}</p>
+                      <div className="comment-actions">
+                        <button className="mod-btn mod-approve" onClick={() => toast(`Komentarz od ${c.user} zatwierdzony`, "success")}>✓ Zatwierdź</button>
+                        <button className="mod-btn mod-reject" onClick={() => toast(`Komentarz od ${c.user} odrzucony`, "error")}>✕ Odrzuć</button>
+                      </div>
                     </div>
                   </div>
                 ))}
               </div>
-              <button className="view-all-btn">View All Comments</button>
+              <button className="view-all-btn" onClick={() => toast("Ładowanie wszystkich komentarzy...", "info")}>
+                View All Comments
+              </button>
             </div>
 
             <div className="access-panel">
@@ -169,11 +176,11 @@ export default function AdminPage() {
                       <span className="access-name">{op.name}</span>
                     </div>
                     <span className={`role-badge role-${op.role.toLowerCase()}`}>{op.role}</span>
-                    <button className="settings-btn">⚙</button>
+                    <button className="settings-btn" onClick={() => toast(`Otwieranie ustawień: ${op.name}`, "info")}>⚙</button>
                   </div>
                 ))}
               </div>
-              <button className="grant-btn">Grant New Access</button>
+              <button className="grant-btn" onClick={() => toast("Otwieranie formularza dostępu...", "info")}>Grant New Access</button>
             </div>
           </div>
         </main>

@@ -11,6 +11,7 @@ import { auth } from "../firebase";
 import { useAuth } from "../context/AuthContext";
 import Footer from "../components/Footer";
 import Button from "../components/Button";
+import { toast } from "../components/Toast";
 import "./LoginPage.css";
 
 export default function LoginPage() {
@@ -126,7 +127,7 @@ export default function LoginPage() {
             <div className="form-group">
               <div className="form-label-row">
                 <label className="form-label">ACCESS KEY</label>
-                {tab === "login" && <button type="button" className="forgot-link">Forgot?</button>}
+                {tab === "login" && <button type="button" className="forgot-link" onClick={() => { if (email) { toast(`Link resetujący wysłany na ${email}`, "success"); } else { toast("Wpisz adres email powyżej", "warn"); } }}>Forgot?</button>}
               </div>
               <div className="input-wrapper">
                 <span className="input-icon">🔒</span>

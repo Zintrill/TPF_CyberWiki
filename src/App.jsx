@@ -6,6 +6,7 @@ import ReactGA from "react-ga4";
 import { AuthProvider } from "./context/AuthContext";
 import AnalyticsListener from "./components/AnalyticsListener";
 import ProtectedRoute from "./components/ProtectedRoute";
+import { ToastContainer, useToastController } from "./components/Toast";
 
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
@@ -20,18 +21,16 @@ const HOTJAR_SITE_ID = Number(import.meta.env.VITE_HOTJAR_SITE_ID) || 0;
 const HOTJAR_VERSION = 6;
 const GA_MEASUREMENT_ID = import.meta.env.VITE_GA_MEASUREMENT_ID || "";
 
-export default function App() {
+function AppInner() {
+  const toasts = useToastController();
+
   useEffect(() => {
-    if (HOTJAR_SITE_ID > 0) {
-      Hotjar.init(HOTJAR_SITE_ID, HOTJAR_VERSION);
-    }
-    if (GA_MEASUREMENT_ID && GA_MEASUREMENT_ID !== "G-XXXXXXXXXX") {
-      ReactGA.initialize(GA_MEASUREMENT_ID);
-    }
+    if (HOTJAR_SITE_ID > 0) Hotjar.init(HOTJAR_SITE_ID, HOTJAR_VERSION);
+    if (GA_MEASUREMENT_ID && GA_MEASUREMENT_ID !== "G-XXXXXXXXXX") ReactGA.initialize(GA_MEASUREMENT_ID);
   }, []);
 
   return (
-    <AuthProvider>
+    <>
       <BrowserRouter>
         <AnalyticsListener />
         <Routes>
@@ -41,17 +40,19 @@ export default function App() {
           <Route path="/defense" element={<DefensePage />} />
           <Route path="/tools" element={<ToolsPage />} />
           <Route path="/article/:slug" element={<ArticlePage />} />
-          <Route
-            path="/admin"
-            element={
-              <ProtectedRoute>
-                <AdminPage />
-              </ProtectedRoute>
-            }
-          />
+          <Route path="/admin" element={<ProtectedRoute><AdminPage /></ProtectedRoute>} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>
+      <ToastContainer toasts={toasts} />
+    </>
+  );
+}
+
+export default function App() {
+  return (
+    <AuthProvider>
+      <AppInner />
     </AuthProvider>
   );
 }

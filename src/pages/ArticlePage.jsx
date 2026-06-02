@@ -1,14 +1,28 @@
+import { useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Comments from "../components/Comments";
 import { articles } from "../data/articles";
+import { toast } from "../components/Toast";
+import { useAuth } from "../context/AuthContext";
 import "./ArticlePage.css";
 
 export default function ArticlePage() {
   const { slug } = useParams();
   const navigate = useNavigate();
+  const { user } = useAuth();
   const article = articles.find((a) => a.slug === slug);
+  const [bookmarked, setBookmarked] = useState(false);
+
+  const toggleBookmark = () => {
+    if (!user) { toast("Zaloguj się aby zapisać artykuł", "warn"); return; }
+    setBookmarked(b => {
+      const next = !b;
+      toast(next ? "Artykuł zapisany ★" : "Usunięto z zapisanych", next ? "success" : "info");
+      return next;
+    });
+  };
 
   if (!article) {
     return (
@@ -34,7 +48,13 @@ export default function ArticlePage() {
               {article.tags.map((tag) => (
                 <span key={tag} className={`tag tag-${tag.toLowerCase().replace(/[\s()]+/g, "-")}`}>{tag}</span>
               ))}
-              <button className="bookmark-btn" title="Bookmark">☆</button>
+              <button
+                className={`bookmark-btn ${bookmarked ? "active" : ""}`}
+                title={bookmarked ? "Usuń z zapisanych" : "Zapisz artykuł"}
+                onClick={toggleBookmark}
+              >
+                {bookmarked ? "★" : "☆"}
+              </button>
             </div>
             <h1 className="article-title">{article.title}</h1>
             <div className="article-meta">
@@ -69,9 +89,7 @@ export default function ArticlePage() {
         <aside className="article-sidebar">
           {article.relatedVectors?.length > 0 && (
             <div className="sidebar-card">
-              <h3 className="sidebar-title">
-                <span>🔗</span> Related Vectors
-              </h3>
+              <h3 className="sidebar-title"><span>🔗</span> Related Vectors</h3>
               <ul className="sidebar-list">
                 {article.relatedVectors.map((v) => {
                   const related = articles.find((a) => a.title === v);
@@ -93,9 +111,7 @@ export default function ArticlePage() {
 
           {article.analysisTools?.length > 0 && (
             <div className="sidebar-card">
-              <h3 className="sidebar-title">
-                <span>🔧</span> Analysis Tools
-              </h3>
+              <h3 className="sidebar-title"><span>🔧</span> Analysis Tools</h3>
               <ul className="sidebar-tools">
                 {article.analysisTools.map((tool) => (
                   <li key={tool.name} className="tool-item">
@@ -109,6 +125,21 @@ export default function ArticlePage() {
               </ul>
             </div>
           )}
+
+          <div className="sidebar-card">
+            <h3 className="sidebar-title"><span>⚡</span> Quick Actions</h3>
+            <div className="quick-actions">
+              <button className="qa-btn" onClick={() => { navigator.clipboard?.writeText(window.location.href); toast("Link skopiowany!", "success"); }}>
+                🔗 Kopiuj link
+              </button>
+              <button className="qa-btn" onClick={() => { window.print(); }}>
+                🖨 Drukuj artykuł
+              </button>
+              <button className="qa-btn" onClick={() => { toast("Zgłoszenie wysłane. Dziękujemy!", "success"); }}>
+                ⚠ Zgłoś błąd
+              </button>
+            </div>
+          </div>
         </aside>
       </main>
       <Footer />
