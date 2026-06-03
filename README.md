@@ -1,122 +1,197 @@
 # CyberWiki
 
-A cybersecurity knowledge base built with React. Secure, dark-themed frontend application modeled after the CyberWiki design.
+> Interaktywna baza wiedzy z zakresu cyberbezpieczeństwa — terminologia, taktyki, narzędzia.
 
-## Screenshots
+**Live demo:** https://tpf-cyber-wiki.vercel.app
 
-> Add screenshots of the running application here before submission.
+---
 
-**Home Page** — Central Command with search, Offense/Defense cards, Terminology of the Day, and Trending OSINT.
+## Screenshoty aplikacji
 
-**Login Page** — Firebase Authentication with Login/Register tabs, Google and GitHub social auth.
+### Strona główna
+![Home Page](docks/main.png)
 
-**Article Page** — Detailed articles with code examples, related vectors, and analysis tools sidebar.
+### Strona logowania
+![Login Page](docks/login.png)
 
-**Tools Page** — Interactive SVG terminology map with definition panel.
+### Artykuły — Offense
+![Offense](docks/offense.png)
 
-**Admin Page** — Command Center Overview with stats, moderation queue, and access control.
+### Artykuły — Defense
+![Defense](docks/defense.png)
+
+### Artykuł
+![Article Page](docks/article.png)
+
+### Interaktywna mapa terminologii
+![Tools — Terminology Map](docks/tools.png)
+
+### Panel admina
+![Admin Page](docks/admin.png)
+
+---
+
+## Screenshoty Google Analytics
+
+![Google Analytics](docks/Analytics.png)
+
+---
+
+## Screenshoty Hotjar
+
+![Hotjar](docks/Hotjar.png)
+
+---
+
+## Screenshoty Firebase
+
+![Firebase Authentication](docks/Firebase.png)
+
+---
+
+## Screenshoty Vercel (Deploy)
+
+![Vercel Deploy](docks/Vercel.png)
 
 ---
 
 ## Tech Stack
 
 - **React 19** + **Vite**
-- **React Router v7** — client-side routing for all screens
-- **Firebase Authentication** — email/password, Google, GitHub
-- **Hotjar** — user behavior analytics
-- **Google Analytics 4** (react-ga4) — page view tracking
+- **React Router v7** — routing SPA
+- **Firebase Authentication** — logowanie email/hasło, Google, GitHub
+- **Hotjar / Contentsquare** — analiza zachowań użytkowników (heatmapy, nagrania sesji)
+- **Google Analytics 4** (react-ga4) — śledzenie odsłon stron
+- **Vercel** — hosting i automatyczny deploy z GitHub
 
-## Project Structure
+---
+
+## Struktura projektu
 
 ```
 src/
   components/
-    Navbar.jsx            # shared navigation bar
-    Footer.jsx            # shared footer
-    Button.jsx            # reusable button component
-    ArticleCard.jsx       # reusable article card
-    AnalyticsListener.jsx # GA4 page view tracker
-    ProtectedRoute.jsx    # Firebase auth guard
+    Navbar.jsx            # nawigacja górna (reużywalna)
+    Footer.jsx            # stopka (reużywalna)
+    Button.jsx            # przycisk (reużywalny)
+    ArticleCard.jsx       # karta artykułu (reużywalna)
+    Comments.jsx          # system komentarzy (reużywalny)
+    AnalyticsListener.jsx # śledzenie GA4 przy zmianie trasy
+    ProtectedRoute.jsx    # ochrona tras wymagających logowania
+    Toast.jsx             # powiadomienia (reużywalne)
   pages/
     HomePage.jsx          # /
     LoginPage.jsx         # /login
     OffensePage.jsx       # /offense
     DefensePage.jsx       # /defense
-    ToolsPage.jsx         # /tools
+    ToolsPage.jsx         # /tools — interaktywna mapa
     ArticlePage.jsx       # /article/:slug
-    AdminPage.jsx         # /admin (protected)
-    NotFoundPage.jsx      # * 404
+    AdminPage.jsx         # /admin (chroniona)
+    NotFoundPage.jsx      # * — 404
   data/
-    articles.js           # static article content
+    articles.js           # baza artykułów (17 terminów)
   context/
-    AuthContext.jsx       # Firebase auth context
-  firebase.js             # Firebase init
-  App.jsx                 # Root routing + analytics init
+    AuthContext.jsx       # kontekst Firebase Auth
+  firebase.js             # inicjalizacja Firebase
+  App.jsx                 # routing + inicjalizacja Hotjar i GA4
   main.jsx
 ```
 
-## Routes
+---
 
-| Path | Page |
-|------|------|
-| `/` | HomePage |
-| `/login` | LoginPage |
-| `/offense` | OffensePage |
-| `/defense` | DefensePage |
-| `/tools` | ToolsPage (Interactive Map) |
-| `/article/:slug` | ArticlePage |
-| `/admin` | AdminPage (requires login) |
-| `*` | NotFoundPage (404) |
+## Trasy (React Router)
 
-## Setup
+| Ścieżka | Widok |
+|---------|-------|
+| `/` | Strona główna — Central Command |
+| `/login` | Logowanie / Rejestracja |
+| `/offense` | Lista artykułów — Ataki |
+| `/defense` | Lista artykułów — Obrona |
+| `/tools` | Interaktywna mapa terminologii |
+| `/article/:slug` | Pojedynczy artykuł |
+| `/admin` | Panel admina (wymaga logowania) |
+| `*` | 404 Not Found |
 
-### 1. Install
+---
+
+## Komponenty reużywalne
+
+| Komponent | Użycie |
+|-----------|--------|
+| `Navbar` | Wszystkie strony |
+| `Footer` | Wszystkie strony |
+| `Button` | LoginPage, formularze |
+| `ArticleCard` | OffensePage, DefensePage |
+| `Comments` | ArticlePage |
+| `ProtectedRoute` | Ochrona `/admin` |
+| `Toast` | Powiadomienia w całej aplikacji |
+| `AnalyticsListener` | Śledzenie GA4 na każdej trasie |
+
+---
+
+## Firebase Authentication
+
+Aplikacja używa Firebase Authentication z obsługą:
+- **Email + hasło** — główna metoda logowania
+- **Google** — logowanie przez popup
+- **GitHub** — logowanie przez popup
+- **Chronione trasy** — `/admin` wymaga aktywnej sesji
+
+Konto testowe: `admin@cyberwiki.com`
+
+---
+
+## Hotjar
+
+Zintegrowany przez skrypt w `index.html` (Site ID: `856568`). Śledzi:
+- Nagrania sesji użytkowników
+- Heatmapy kliknięć i ruchu kursora
+- Statystyki stron (Views, Sessions, Time spent, Scroll depth)
+
+---
+
+## Google Analytics 4
+
+Zintegrowany przez pakiet `react-ga4` (Measurement ID: `G-TBJBJ0P6QY`). Śledzi:
+- Odsłony wszystkich podstron (pageview przy każdej zmianie trasy)
+- Źródła ruchu (Direct, Organic Social, Referral)
+- Lokalizację użytkowników
+
+---
+
+## Uruchomienie lokalne
 
 ```bash
+# 1. Zainstaluj zależności
 npm install
-```
 
-### 2. Firebase setup
+# 2. Utwórz plik .env.local i uzupełnij danymi z Firebase
+cp .env.example .env.local
 
-1. Create a project at [Firebase Console](https://console.firebase.google.com/)
-2. Add a web app
-3. Enable **Email/Password**, **Google**, and **GitHub** sign-in methods
-4. Replace the placeholder values in `src/firebase.js`
-
-### 3. Hotjar
-
-1. Create account at [hotjar.com](https://www.hotjar.com)
-2. In `src/App.jsx`, set `HOTJAR_SITE_ID` to your numeric site ID
-
-### 4. Google Analytics
-
-1. Create GA4 property at [analytics.google.com](https://analytics.google.com)
-2. In `src/App.jsx`, set `GA_MEASUREMENT_ID` to your `G-XXXXXXXXXX` ID
-
-### 5. Run
-
-```bash
+# 3. Uruchom serwer deweloperski
 npm run dev
-```
 
-### 6. Build
-
-```bash
+# 4. Build produkcyjny
 npm run build
 ```
 
+### Zmienne środowiskowe (.env.local)
+
+```
+VITE_FIREBASE_API_KEY=
+VITE_FIREBASE_AUTH_DOMAIN=
+VITE_FIREBASE_PROJECT_ID=
+VITE_FIREBASE_STORAGE_BUCKET=
+VITE_FIREBASE_MESSAGING_SENDER_ID=
+VITE_FIREBASE_APP_ID=
+VITE_HOTJAR_SITE_ID=
+VITE_GA_MEASUREMENT_ID=
+```
+
+---
+
 ## Deploy
 
-Deploy the `dist/` folder to any static host:
+Aplikacja jest wdrożona na **Vercel** z automatycznym deployem przy każdym pushu do brancha `main`.
 
-- **Vercel** — connect GitHub, auto-deploy
-- **Netlify** — drag & drop `dist/`
-- **Railway** — static site from `dist/`
-
-## Hotjar Screenshots
-
-> Add Hotjar heatmap and recording screenshots here after collecting user data.
-
-## Google Analytics Screenshots
-
-> Add Google Analytics dashboard screenshots here after the app receives traffic.
+Konfiguracja SPA routing: `vercel.json` przekierowuje wszystkie ścieżki na `index.html`.
